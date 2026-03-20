@@ -11,13 +11,23 @@ A pre-built static React frontend for Spyder Sec — a cybersecurity-themed webs
 ## Project Structure
 ```
 .
-├── index.html          # Entry point
+├── index.html          # Entry point (includes team photo injection script)
 ├── favicon.svg         # Site favicon
 ├── assets/
 │   ├── index-*.js      # Compiled React JS bundle
 │   └── index-*.css     # Compiled CSS bundle
-└── images/             # Static image assets (referenced by app)
+└── images/             # Static image assets
+    └── team/           # Team member photos
+        ├── himanshu.jpg  # Himanshu Vyas - Founder
+        ├── harsh.jpg     # Harsh Tikkiwal - Chief Technology Officer
+        └── michelle.jpg  # Michelle Dhawan - Chief Marketing Officer
 ```
+
+## Team Photo Injection
+Since the app is pre-compiled (no source code), team photos are injected via a script in `index.html`. The script uses a MutationObserver to detect when the team section renders, then replaces the icon placeholders with actual photos and updates titles:
+- Himanshu Vyas → Founder
+- Harsh Tikkiwal → Chief Technology Officer
+- Michelle Dhawan → Chief Marketing Officer
 
 ## Running the App
 - **Workflow**: "Start application"

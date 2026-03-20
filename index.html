@@ -13,5 +13,59 @@
   </head>
   <body>
     <div id="root"></div>
-  <script src="https://replit-cdn.com/replit-pill/replit-pill.global.js" data-referral-code="6x1ugfgnele1" data-repl-id="358c5c7b-e640-4331-9fb4-0750eaa84e1b"></script></body>
+  <script src="https://replit-cdn.com/replit-pill/replit-pill.global.js" data-referral-code="6x1ugfgnele1" data-repl-id="358c5c7b-e640-4331-9fb4-0750eaa84e1b"></script>
+  <script>
+    const teamPhotos = {
+      'Himanshu Vyas': '/images/team/himanshu.jpg',
+      'Harsh Tikkiwal': '/images/team/harsh.jpg',
+      'Michelle Dhawan': '/images/team/michelle.jpg'
+    };
+    const teamRoles = {
+      'Himanshu Vyas': 'Founder',
+      'Harsh Tikkiwal': 'Chief Technology Officer',
+      'Michelle Dhawan': 'Chief Marketing Officer'
+    };
+    function injectTeamPhotos() {
+      const teamSection = document.getElementById('team');
+      if (!teamSection) return false;
+      const cards = teamSection.querySelectorAll('.cyber-clip');
+      if (!cards.length) return false;
+      let injected = false;
+      cards.forEach(function(card) {
+        const nameEl = card.querySelector('h3');
+        if (!nameEl) return;
+        const name = nameEl.textContent.trim();
+        const photoSrc = teamPhotos[name];
+        const role = teamRoles[name];
+        if (photoSrc) {
+          const iconDiv = card.querySelector('.w-20.h-20');
+          if (iconDiv && !iconDiv.querySelector('img')) {
+            iconDiv.innerHTML = '<img src="' + photoSrc + '" alt="' + name + '" style="width:100%;height:100%;object-fit:cover;border-radius:9999px;" />';
+            iconDiv.style.padding = '0';
+            iconDiv.style.overflow = 'hidden';
+            injected = true;
+          }
+        }
+        if (role) {
+          const roleEl = card.querySelector('.text-xs');
+          if (roleEl) roleEl.textContent = role;
+        }
+      });
+      return injected;
+    }
+    function tryInject() {
+      if (!injectTeamPhotos()) {
+        const observer = new MutationObserver(function() {
+          if (injectTeamPhotos()) observer.disconnect();
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', tryInject);
+    } else {
+      tryInject();
+    }
+  </script>
+</body>
 </html>
