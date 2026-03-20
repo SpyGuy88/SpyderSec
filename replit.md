@@ -17,10 +17,17 @@ A pre-built static React frontend for Spyder Sec — a cybersecurity-themed webs
 │   ├── index-*.js      # Compiled React JS bundle
 │   └── index-*.css     # Compiled CSS bundle
 └── images/             # Static image assets
-    └── team/           # Team member photos
-        ├── himanshu.jpg  # Himanshu Vyas - Founder
-        ├── harsh.jpg     # Harsh Tikkiwal - Chief Technology Officer
-        └── michelle.jpg  # Michelle Dhawan - Chief Marketing Officer
+    ├── team/           # Team member photos
+    │   ├── himanshu.jpg  # Himanshu Vyas - Founder
+    │   ├── harsh.jpg     # Harsh Tikkiwal - Chief Technology Officer
+    │   └── michelle.jpg  # Michelle Dhawan - Chief Marketing Officer
+    └── gallery/        # Photo gallery images (workshop/event photos)
+        ├── gallery1.jpg  # Workshop: Deep Fake Awareness
+        ├── gallery2.jpg  # Community Workshop
+        ├── gallery3.jpg  # Security Awareness Session
+        ├── gallery4.jpg  # Interactive Quiz Session
+        ├── gallery5.jpg  # Hands-on Training
+        └── gallery6.jpg  # Recognition Ceremony
 ```
 
 ## Team Photo Injection
