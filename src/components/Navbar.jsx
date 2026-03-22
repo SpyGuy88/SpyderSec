@@ -50,7 +50,7 @@ export default function Navbar() {
               className="relative flex items-center justify-center w-12 h-12 rounded-full overflow-hidden transition-all duration-300"
               style={{ border: '1px solid hsl(0 100% 50% / 0.3)' }}
             >
-              <img src="/images/spyder-sec-logo.jpg" alt="Spyder Sec Logo" className="w-full h-full object-cover" />
+              <img src="/spyder-sec-logo.jpg" alt="Spyder Sec Logo" className="w-full h-full object-cover" />
             </div>
             <span className="font-display font-bold text-xl tracking-widest transition-colors" style={{ color: 'hsl(0 0% 98%)' }}>
               SPYDER SEC

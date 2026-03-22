@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img src="/images/hero-bg.svg" alt="" className="w-full h-full object-cover" style={{ opacity: 0.7 }} />
+        <img src="/hero-bg.svg" alt="" className="w-full h-full object-cover" style={{ opacity: 0.7 }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, hsl(0 0% 4% / 0.4), hsl(0 0% 4% / 0.8), hsl(0 0% 4%))' }} />
         <div className="absolute inset-0 cyber-grid" style={{ opacity: 0.2 }} />
         <motion.div
@@ -127,7 +127,7 @@ export default function Hero() {
               />
               <div className="absolute inset-8 rounded-full overflow-hidden flex items-center justify-center"
                 style={{ backgroundColor: 'hsl(0 0% 7%)', border: '2px solid hsl(0 100% 50% / 0.4)' }}>
-                <img src="/images/hero-bg.png" alt="Spyder Sec" className="w-full h-full object-cover" style={{ opacity: 0.8 }} />
+                <img src="/hero-bg.png" alt="Spyder Sec" className="w-full h-full object-cover" style={{ opacity: 0.8 }} />
                 <div className="absolute bottom-4 left-0 right-0 text-center">
                   <span className="font-display font-bold text-sm tracking-widest" style={{ color: 'hsl(0 0% 98%)' }}>
                     SPYDER SEC

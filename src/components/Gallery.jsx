@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
 const photos = [
-  { src: '/images/gallery/gallery1.jpg', caption: 'Workshop: Deep Fake Awareness' },
-  { src: '/images/gallery/gallery2.jpg', caption: 'Community Workshop' },
-  { src: '/images/gallery/gallery3.jpg', caption: 'Security Awareness Session' },
-  { src: '/images/gallery/gallery4.jpg', caption: 'Interactive Quiz Session' },
-  { src: '/images/gallery/gallery5.jpg', caption: 'Hands-on Training' },
-  { src: '/images/gallery/gallery6.jpg', caption: 'Recognition Ceremony' },
+  { src: '/gallery1.jpg' },
+  { src: '/gallery2.jpg' },
+  { src: '/gallery3.jpg' },
+  { src: '/gallery4.jpg' },
+  { src: '/gallery5.jpg' },
+  { src: '/gallery6.jpg' },
 ]
 
 export default function Gallery() {
@@ -60,9 +60,6 @@ export default function Gallery() {
                 className="absolute inset-0 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{ backgroundColor: 'hsl(0 0% 4% / 0.7)' }}
               >
-                <span className="text-sm font-mono uppercase tracking-widest" style={{ color: 'hsl(0 0% 98%)' }}>
-                  {photo.caption}
-                </span>
               </div>
             </motion.div>
           ))}
