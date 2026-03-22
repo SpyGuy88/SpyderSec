@@ -4,10 +4,108 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <title>Spyder Sec</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="assets/index-BlkRqtfw.js"></script>
+    <link rel="stylesheet" crossorigin href="assets/index-B6cL74cV.css">
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <script src="https://replit-cdn.com/replit-pill/replit-pill.global.js" data-referral-code="6x1ugfgnele1" data-repl-id="358c5c7b-e640-4331-9fb4-0750eaa84e1b"></script>
+  <script>
+    const teamPhotos = {
+      'Himanshu Vyas': '/images/team/himanshu.jpg',
+      'Harsh Tikkiwal': '/images/team/harsh.jpg',
+      'Michelle Dhawan': '/images/team/michelle.jpg'
+    };
+    const teamRoles = {
+      'Himanshu Vyas': 'Founder',
+      'Harsh Tikkiwal': 'Chief Technology Officer',
+      'Michelle Dhawan': 'Chief Marketing Officer'
+    };
+    const galleryPhotos = [
+      { src: '/images/gallery/gallery1.jpg', caption: 'Workshop: Deep Fake Awareness' },
+      { src: '/images/gallery/gallery2.jpg', caption: 'Community Workshop' },
+      { src: '/images/gallery/gallery3.jpg', caption: 'Security Awareness Session' },
+      { src: '/images/gallery/gallery4.jpg', caption: 'Interactive Quiz Session' },
+      { src: '/images/gallery/gallery5.jpg', caption: 'Hands-on Training' },
+      { src: '/images/gallery/gallery6.jpg', caption: 'Recognition Ceremony' }
+    ];
+    function injectTeamPhotos() {
+      const teamSection = document.getElementById('team');
+      if (!teamSection) return false;
+      const cards = teamSection.querySelectorAll('.cyber-clip');
+      if (!cards.length) return false;
+      let injected = false;
+      cards.forEach(function(card) {
+        const nameEl = card.querySelector('h3');
+        if (!nameEl) return;
+        const name = nameEl.textContent.trim();
+        const photoSrc = teamPhotos[name];
+        const role = teamRoles[name];
+        if (photoSrc) {
+          const iconDiv = card.querySelector('.w-20.h-20');
+          if (iconDiv && !iconDiv.querySelector('img')) {
+            iconDiv.innerHTML = '<img src="' + photoSrc + '" alt="' + name + '" style="width:100%;height:100%;object-fit:cover;border-radius:9999px;" />';
+            iconDiv.style.padding = '0';
+            iconDiv.style.overflow = 'hidden';
+            injected = true;
+          }
+        }
+        if (role) {
+          const roleEl = card.querySelector('.text-xs');
+          if (roleEl) roleEl.textContent = role;
+        }
+      });
+      return injected;
+    }
+    function injectGalleryPhotos() {
+      const gallerySection = document.getElementById('gallery');
+      if (!gallerySection) return false;
+      const imgs = gallerySection.querySelectorAll('.aspect-video img');
+      if (!imgs.length) return false;
+      imgs.forEach(function(img, i) {
+        if (i < galleryPhotos.length && !img.dataset.replaced) {
+          img.src = galleryPhotos[i].src;
+          img.alt = galleryPhotos[i].caption;
+          img.dataset.replaced = '1';
+          const captionEl = img.closest('.aspect-video') && img.closest('.aspect-video').querySelector('span');
+          if (captionEl) captionEl.textContent = galleryPhotos[i].caption;
+          const parentDiv = img.closest('[onclick], [data-framer-name]') || img.parentElement && img.parentElement.closest('div[class*="group"]');
+          if (parentDiv) {
+            const finalSrc = galleryPhotos[i].src;
+            parentDiv.addEventListener('click', function(e) {
+              const lightboxImg = document.querySelector('img[src*="hero-bg"], img[src*="cyber-shield"], img[src*="cyber-nodes"], img[src*="spyder-sec-logo"]');
+              if (lightboxImg) lightboxImg.src = finalSrc;
+              setTimeout(function() {
+                const allFixed = document.querySelectorAll('body > div:last-child img, [role="dialog"] img');
+                allFixed.forEach(function(li) { if (li.dataset.replaced) return; li.src = finalSrc; li.dataset.replaced = '1'; });
+              }, 50);
+            });
+          }
+        }
+      });
+      return imgs.length > 0;
+    }
+    function tryInject() {
+      var teamDone = injectTeamPhotos();
+      var galleryDone = injectGalleryPhotos();
+      if (!teamDone || !galleryDone) {
+        const observer = new MutationObserver(function() {
+          var t = injectTeamPhotos();
+          var g = injectGalleryPhotos();
+          if (t && g) observer.disconnect();
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', tryInject);
+    } else {
+      tryInject();
+    }
+  </script>
+</body>
 </html>
